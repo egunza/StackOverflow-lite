@@ -23,6 +23,12 @@ class QuestionsTestCase(unittest.TestCase):
         res = self.client().get('/api/v1.0/questions/')
         self.assertEqual(res.status_code, 200)
         self.assertIn('What is the ...', str(res.data))
+    
+    def test_api_can_get_question_by_id(self):
+        
+        res = self.client().get('/api/v1.0/questions/2')
+        self.assertEqual(res.status_code, 200)
+        self.assertIn('How would ...', str(res.data))
 
 
 if __name__ == "__main__":
