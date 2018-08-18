@@ -9,14 +9,8 @@ class QuestionsTestCase(unittest.TestCase):
         """Define test variables and initialize app."""
         self.app = create_app(config_name="testing")
         self.client = self.app.test_client
-        self.questions = [
-                                {
-                                    'id': 1,
-                                    'question': 'What is the test1?'},
-                                {
-                                    'id': 2,
-                                    'question': 'How would would you test?'}
-                            ]
+        self.question = {'question': 'Define the various programming paridigms'}
+                                
 
     def test_api_can_get_all_questions(self):
         
@@ -29,6 +23,13 @@ class QuestionsTestCase(unittest.TestCase):
         res = self.client().get('/api/v1.0/questions/2')
         self.assertEqual(res.status_code, 200)
         self.assertIn('How would ...', str(res.data))
+
+
+    def test_question_creation(self):
+        
+        res = self.client().post('/api/v1.0/questions/', data=self.question)
+        self.assertEqual(res.status_code, 201)
+        self.assertIn('Define the various programming paridigms', str(res.data))
 
 
 if __name__ == "__main__":

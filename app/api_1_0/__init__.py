@@ -1,5 +1,5 @@
 from flask import Blueprint
-from flask import jsonify, abort
+from flask import jsonify, abort, request
 api = Blueprint('api', __name__)
 
 
@@ -26,3 +26,16 @@ def get_question(question_id):
     response = jsonify({'question': question[0]}) 
     response.status_code = 200
     return response    
+
+@api.route('/questions/', methods=['POST'])
+def create_question():
+    if not request.json or not 'question' in request.json:
+        abort(400)
+    question = {
+        'id': questions[-1]['id'] + 1,
+        'questiion': request.json['question'],
+        }
+    questions.append(question)
+    response = jsonify({'questiion': question})
+    response.status_code = 201
+    return response
