@@ -25,12 +25,19 @@ class QuestionsTestCase(unittest.TestCase):
         self.assertIn('How would ...', str(res.data))
 
 
-    def test_question_creation(self):
+    """ def test_question_creation(self):
         
         res = self.client().post('/api/v1.0/questions/', data=self.question)
         self.assertEqual(res.status_code, 201)
-        self.assertIn('Define the various programming paridigms', str(res.data))
+        self.assertIn('Define the various programming paridigms', str(res.data)) """
 
+    def test_question_deletion(self):
+        
+        res = self.client().delete('/api/v1.0/questions/1')
+        self.assertEqual(res.status_code, 200)
+        # Test to see if it exists, should return a 404
+        result = self.client().get('/api/v1.0/questions/1')
+        self.assertEqual(result.status_code, 404)
 
 if __name__ == "__main__":
     unittest.main()

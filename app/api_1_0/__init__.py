@@ -39,3 +39,11 @@ def create_question():
     response = jsonify({'questiion': question})
     response.status_code = 201
     return response
+
+@api.route('/questions/<int:question_id>', methods=['DELETE'])
+def delete_question(question_id):
+    question = [question for question in questions if question['id'] == question_id]
+    if len(question) == 0:
+        abort(404)
+    questions.remove(question[0])
+    return jsonify({'result': True})
