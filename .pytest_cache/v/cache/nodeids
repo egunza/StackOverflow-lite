@@ -1,0 +1,4 @@
+[
+  "test_endpoints.py::QuestionsTestCase::test_api_can_get_all_questions",
+  "test_endpoints.py::QuestionsTestCase::test_api_can_get_question_by_id"
+]
