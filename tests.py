@@ -40,11 +40,11 @@ class EndpointsTestCase(unittest.TestCase):
         result = self.client().get('/api/v1.0/questions/1')
         self.assertEqual(result.status_code, 404)
 
-    """ def test_api_can_get_all_answers_to_a_question(self):
+    def test_api_can_get_all_answers_to_a_question(self):
         
         res = self.client().get('/api/v1.0/questions/2/answers/')
         self.assertEqual(res.status_code, 200)
-        self.assertIn('All editors are ...', str(res.data)) """
+        self.assertIn('All editors are ...', str(res.data))
     
     def test_answer_creation(self):
             

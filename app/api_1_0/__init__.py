@@ -31,7 +31,7 @@ answers = [{
         'question_id':1
         }]
 
-
+#Post an answer to a particular question
 @api.route('/questions/<int:question_id>/answers/', methods=['POST'], strict_slashes=False)
 def create_answer(question_id):
     if not request.json or not 'answer' in request.json:
@@ -46,12 +46,14 @@ def create_answer(question_id):
     response.status_code = 201
     return response
 
+#Get all questions posted
 @api.route('/questions/', methods=['GET'], strict_slashes=False)
 def get_questions():
     response = jsonify({'questions': questions})
     response.status_code = 200
     return response
 
+#Get a particular question
 @api.route('/questions/<int:question_id>/', methods=['GET'], strict_slashes=False)
 def get_question(question_id):
     question = [question for question in questions if question['id'] == question_id]
@@ -61,6 +63,7 @@ def get_question(question_id):
     response.status_code = 200
     return response    
 
+#Post a question
 @api.route('/questions/', methods=['POST'], strict_slashes=False)
 def create_question():
     if not request.json or not 'question' in request.json:
@@ -74,6 +77,7 @@ def create_question():
     response.status_code = 201
     return response
 
+#Delete a particular question
 @api.route('/questions/<int:question_id>/', methods=['DELETE'], strict_slashes=False)
 def delete_question(question_id):
     question = [question for question in questions if question['id'] == question_id]
@@ -83,7 +87,7 @@ def delete_question(question_id):
     return jsonify({'result': True})
 
 
-
+#Get answers to particular question
 @api.route('/questions/<int:question_id>/answers/', methods=['GET'], strict_slashes=False)
 def get_answers(question_id):
     ans = [answer for answer in answers if answer['question_id'] == question_id]
