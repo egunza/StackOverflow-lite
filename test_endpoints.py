@@ -27,7 +27,7 @@ class QuestionsTestCase(unittest.TestCase):
 
     def test_question_creation(self):
         
-        res = self.client().post('/api/v1.0/questions/', data=self.question)
+        res = self.client().post('/api/v1.0/questions/', json=self.question)
         self.assertEqual(res.status_code, 201)
         self.assertIn('Define the various programming paridigms', str(res.data))
 
