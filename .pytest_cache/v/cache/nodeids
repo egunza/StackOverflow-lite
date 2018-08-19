@@ -1,0 +1,3 @@
+[
+  "test_endpoints.py::QuestionsTestCase::test_api_can_get_all_questions"
+]
