@@ -1,0 +1,7 @@
+[
+  "test_endpoints.py::EndpointsTestCase::test_answer_creation",
+  "test_endpoints.py::EndpointsTestCase::test_api_can_get_all_questions",
+  "test_endpoints.py::EndpointsTestCase::test_api_can_get_question_by_id",
+  "test_endpoints.py::EndpointsTestCase::test_question_creation",
+  "test_endpoints.py::EndpointsTestCase::test_question_deletion"
+]
