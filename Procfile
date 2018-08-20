@@ -1,0 +1,1 @@
+web : gurnicon app:app
